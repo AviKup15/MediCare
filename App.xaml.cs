@@ -5,8 +5,8 @@
         public App()
         {
             InitializeComponent();
-
             MainPage = new AppShell();
+            Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }

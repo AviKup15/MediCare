@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediCare.RegisterPage"
+             Title="Register">
+
+    <VerticalStackLayout Padding="20" Spacing="15"
+                         VerticalOptions="Center">
+
+        <Label Text="Create Account"
+               FontSize="28"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+        <Entry x:Name="EmailEntry"
+               Placeholder="Email"
+               Keyboard="Email"
+               ClearButtonVisibility="WhileEditing" />
+        <Grid>
+            <Entry x:Name="PasswordEntry"
+                   Placeholder="Password"
+                   IsPassword="True"
+                   ClearButtonVisibility="WhileEditing" />
+            <Button x:Name="TogglePasswordBtn"
+                    Text="👁"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    Clicked="OnTogglePasswordClicked" />
+        </Grid>
+        <Entry x:Name="ConfirmPasswordEntry"
+               Placeholder="Confirm Password"
+               IsPassword="True"
+               ClearButtonVisibility="WhileEditing" />
+        <Button Text="Register"
+                x:Name="RegisterBtn"
+                BackgroundColor="#27AE60"
+                TextColor="White"
+                Clicked="OnRegisterClicked" />
+        <Button Text="Already have an account? Login"
+                BackgroundColor="Transparent"
+                TextColor="Gray"
+                Clicked="OnGoToLoginClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>
