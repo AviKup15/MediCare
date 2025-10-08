@@ -1,6 +1,7 @@
 ﻿using Firebase.Auth;
 using System.Windows.Input;
-
+using MediCare.Models;
+using MediCare.ModelLogic;
 namespace MediCare.ViewModel
 {
     internal partial class MainPageVM : ObservableObject

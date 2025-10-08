@@ -1,12 +1,16 @@
-﻿namespace MediCare.Models
+﻿using MediCare.ModelLogic;
+
+namespace MediCare.Models
 {
-    internal abstract class UserModel
+    internal abstract class UserModel 
     {
+        protected FbData fbd = new();
+
         public bool IsRegistered => !string.IsNullOrWhiteSpace(Name);
         public string Name { get; set; } = string.Empty;
-        public abstract void Register();
         public string UserName { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public abstract bool Login();
+        public abstract void Register();
+        public abstract bool IsValid();
     }
 }

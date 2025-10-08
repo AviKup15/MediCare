@@ -6,16 +6,15 @@ namespace MediCare.ModelLogic
     {
         public override void Register()
         {
-            Preferences.Set(Keys.NameKey, Name);
+            fbd.CreateUserWithEmailAndPasswordAsync(Email, Password, Name, OnComplete);
         }
         public User()
         {
             Name = Preferences.Get(Keys.NameKey, string.Empty);
+            Email = Preferences.Get(Keys.EmailKey, string.Empty);
+            Password = Preferences.Get(Keys.PasswordKey, string.Empty);
         }
-        public override bool Login()
-        {
-            return true;
-        }
+       
 
         private void OnComplete(Task task)
         {
@@ -26,12 +25,15 @@ namespace MediCare.ModelLogic
                 Shell.Current.DisplayAlert(Strings.Error, task.Exception?.Message, Strings.Ok);
             }
         }
-
+        public override bool IsValid()
+        {
+            return !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Password) && !string.IsNullOrWhiteSpace(Email);
+        }
         private void SaveToPreferences()
         {
-            Name = Preferences.Set(Keys.NameKey, Name);
-            Email = Preferences.Set(Keys.EmailKey, Email);
-            Password = Preferences.Set(Keys.PasswordKey, Password);
+            Preferences.Set(Keys.NameKey, Name);
+            Preferences.Set(Keys.EmailKey, Email);
+            Preferences.Set(Keys.PasswordKey, Password);
         }
     }
 }

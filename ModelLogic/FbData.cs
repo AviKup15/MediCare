@@ -5,7 +5,7 @@ using Plugin.CloudFirestore;
 
 namespace MediCare.ModelLogic
 {
-    public class FbData : FbDataModel
+    abstract class FbData : FbDataModel
     {
         
         public override async void CreateUserWithEmailAndPasswordAsync(string email, string password, string name, Action<System.Threading.Tasks.Task> OnComplete)
