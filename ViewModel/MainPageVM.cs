@@ -6,7 +6,7 @@ namespace MediCare.ViewModel
 {
     internal partial class MainPageVM : ObservableObject
     {
-        private User user = new();
+        private MediCare.ModelLogic.User user = new();
         public ICommand LoginCommand { get; }
         public ICommand ToggleIsPasswordCommand { get; }
         public bool IsBusy { get; set; } = false;
