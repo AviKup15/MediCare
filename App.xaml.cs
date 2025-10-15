@@ -6,7 +6,7 @@
         {
             InitializeComponent();
             MainPage = new AppShell();
-            Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            Shell.Current.GoToAsync($"//{nameof(MainPage)}");
         }
     }
 }

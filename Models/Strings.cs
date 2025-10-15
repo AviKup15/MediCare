@@ -17,6 +17,7 @@
         public const string Error = "Error";
         public const string CreateUserError = "CreateUserError";
         public const string Ok = "Ok";
+        public const string Password = "Password";
 
     }
 }

@@ -8,6 +8,7 @@ namespace MediCare
         public RegisterPage()
         {
             InitializeComponent();
+            // other initialization
         }
         private void OnTogglePasswordClicked(object sender, EventArgs e)
         {

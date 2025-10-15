@@ -17,6 +17,7 @@ namespace MediCare.Models
             FirebaseAuthConfig fac = new()
             {
                 ApiKey = Keys.FbApiKey,
+                AuthDomain = Keys.FbAppDomainKey,
                 Providers = [new EmailProvider()]
             };
             facl = new FirebaseAuthClient(fac);
