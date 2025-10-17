@@ -18,6 +18,7 @@
         public const string CreateUserError = "CreateUserError";
         public const string Ok = "Ok";
         public const string Password = "Password";
+        public const string EmailOrPasswordIncorrect = "Email or password is incorrect.";
 
     }
 }

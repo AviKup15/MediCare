@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Maui;
 using MediCare.Models;
 using MediCare.ModelLogic;
 using System.Windows.Input;
@@ -9,23 +9,10 @@ namespace MediCare.ViewModel
     {
         private readonly User user = new();
 
-        public IAsyncRelayCommand RegisterCommand { get; }
+        public ICommand RegisterCommand { get; }
         public ICommand ToggleIsPasswordCommand { get; }
 
-        public bool IsBusy
-        {
-            get => _isBusy;
-            set
-            {
-                if (_isBusy != value)
-                {
-                    _isBusy = value;
-                    OnPropertyChanged();
-                    RegisterCommand.NotifyCanExecuteChanged();
-                }
-            }
-        }
-        private bool _isBusy;
+        public bool IsBusy { get; set; }
 
         public string Name
         {
@@ -36,7 +23,7 @@ namespace MediCare.ViewModel
                 {
                     user.Name = value;
                     OnPropertyChanged();
-                    RegisterCommand.NotifyCanExecuteChanged();
+                    (RegisterCommand as Command) ?.ChangeCanExecute();
                 }
             }
         }
@@ -50,7 +37,7 @@ namespace MediCare.ViewModel
                 {
                     user.Email = value;
                     OnPropertyChanged();
-                    RegisterCommand.NotifyCanExecuteChanged();
+                    (RegisterCommand as Command)?.ChangeCanExecute();
                 }
             }
         }
@@ -64,7 +51,7 @@ namespace MediCare.ViewModel
                 {
                     user.Password = value;
                     OnPropertyChanged();
-                    RegisterCommand.NotifyCanExecuteChanged();
+                    (RegisterCommand as Command)?.ChangeCanExecute();
                 }
             }
         }
@@ -78,7 +65,7 @@ namespace MediCare.ViewModel
                 {
                     _confirmPassword = value;
                     OnPropertyChanged();
-                    RegisterCommand.NotifyCanExecuteChanged();
+                    (RegisterCommand as Command)?.ChangeCanExecute();
                 }
             }
         }
@@ -88,7 +75,7 @@ namespace MediCare.ViewModel
 
         public RegisterPageVM()
         {
-            RegisterCommand = new AsyncRelayCommand(Register, CanRegister);
+            RegisterCommand = new Command(async() => await Register(), Ca   nRegister);
             ToggleIsPasswordCommand = new Command(ToggleIsPassword);
         }
 

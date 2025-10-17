@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace MediCare
+namespace MediCare.Converters
 {
     public class InvertedBoolConverter : IValueConverter
     {
