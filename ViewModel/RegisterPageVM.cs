@@ -75,7 +75,7 @@ namespace MediCare.ViewModel
 
         public RegisterPageVM()
         {
-            RegisterCommand = new Command(async() => await Register(), Ca   nRegister);
+            RegisterCommand = new Command(async() => await Register(), CanRegister);
             ToggleIsPasswordCommand = new Command(ToggleIsPassword);
         }
 
