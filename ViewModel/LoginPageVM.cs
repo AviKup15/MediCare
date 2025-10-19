@@ -1,6 +1,6 @@
-﻿namespace MediCare.ViewModel
-{
-    internal class LoginPageVM
-    {
-    }
-}
+﻿//namespace MediCare.ViewModel
+//{
+//    internal class LoginPageVM
+//    {
+//    }
+//}

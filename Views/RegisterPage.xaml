@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:MediCare.ViewModel"
              x:Class="MediCare.RegisterPage"
              Title="Register">
-
+<!--
     <ContentPage.BindingContext>
         <viewmodel:RegisterPageVM />
     </ContentPage.BindingContext>
@@ -18,20 +18,23 @@
                    HorizontalOptions="Center"
                    Margin="0,20,0,30"/>
 
-            <!-- Name Entry -->
+            //Name Entry
             <Label Text="Name:"/>
             <Entry x:Name="NameEntry"
                    Text="{Binding Name}"
                    Placeholder="Enter your name"/>
 
-            <!-- Email Entry -->
+            
+            //Email Entry
             <Label Text="Email:"/>
             <Entry x:Name="EmailEntry"
                    Text="{Binding Email}"
                    Placeholder="Enter your email"
                    Keyboard="Email"/>
 
-            <!-- Password Entry -->
+            
+            //Password Entry
+            
             <Label Text="Password:"/>
             <Grid ColumnDefinitions="*,Auto">
                 <Entry x:Name="PasswordEntry"
@@ -46,13 +49,18 @@
                         WidthRequest="50"/>
             </Grid>
 
-            <!-- Confirm Password Entry -->
+            
+            //Confirm Password Entry
+            
             <Label Text="Confirm Password:"/>
             <Entry x:Name="ConfirmPasswordEntry"
                    Placeholder="Confirm your password"
                    IsPassword="True"/>
 
-            <!-- Register Button -->
+            
+    
+            //Register Button
+            
             <Button Text="Register"
                     Command="{Binding RegisterCommand}"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
@@ -60,18 +68,24 @@
                     BackgroundColor="#007ACC"
                     TextColor="White"/>
 
-            <!-- Activity Indicator -->
+            
+            //Activity Indicator
+            
             <ActivityIndicator IsRunning="{Binding IsBusy}"
                               IsVisible="{Binding IsBusy}"
                               Color="#007ACC"/>
-
-            <!-- Go to Login -->
+            
+            //o to Login
+            
             <Button Text="Already have an account? Login"
                     Clicked="OnGoToLoginClicked"
                     BackgroundColor="Transparent"
                     TextColor="#007ACC"
                     Margin="0,10,0,0"/>
+            
 
         </VerticalStackLayout>
     </ScrollView>
+    -->
 </ContentPage>
+    

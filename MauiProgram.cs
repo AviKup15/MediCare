@@ -8,7 +8,7 @@ namespace MediCare
         public static MauiApp CreateMauiApp()
         {
            MauiAppBuilder builder = MauiApp.CreateBuilder();
-            builder
+           builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>

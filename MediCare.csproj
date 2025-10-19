@@ -95,6 +95,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Remove="Views\RegisterPage.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	 
 	  <GoogleServicesJson Include="Resources\Raw\google-services.json" />
 	</ItemGroup>
@@ -109,9 +113,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\RegisterPage.xaml">
+	  <MauiXaml Update="Views\AuthPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <!--<MauiXaml Update="Views\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>-->
 	</ItemGroup>
 
 	

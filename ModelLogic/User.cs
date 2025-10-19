@@ -7,10 +7,12 @@ namespace MediCare.ModelLogic
     {
         public override void Register()
         {
+            IsBusy = true;
             fbd.CreateUserWithEmailAndPasswordAsync(Email, Password, Name, OnComplete);
         }
-        public override void Login(Action<bool, string> onComplete)
+        internal void Login()
         {
+            IsBusy = true;
             fbd.SignInWithEmailAndPasswordAsync(Email, Password, OnComplete);
         }
         public User()
@@ -19,26 +21,44 @@ namespace MediCare.ModelLogic
             Email = Preferences.Get(Keys.EmailKey, string.Empty);
             Password = Preferences.Get(Keys.PasswordKey, string.Empty);
         }
+        //private void OnComplete(Task task)
+        //{
+        //    MainThread.InvokeOnMainThreadAsync(() =>
+        //    {
+        //        if (task.IsCompletedSuccessfully)
+        //        {
+        //            SaveToPreferences();
+        //            OnAuthComplete?.Invoke(this, EventArgs.Empty);
+        //        }
+        //        else
+        //        {
+        //            ShowAlert(Strings.EmailOrPasswordIncorrect);
+        //        }
+        //    });
+        //}
         private void OnComplete(Task task)
         {
-            MainThread.InvokeOnMainThreadAsync(() =>
+            IsBusy = false;
+            if (task.IsCompletedSuccessfully)
             {
-                if (task.IsCompletedSuccessfully)
-                {
-                    SaveToPreferences();
-                    OnAuthComplete?.Invoke(this, EventArgs.Empty);
-                }
-                else
-                {
-                    ShowAlert(Strings.EmailOrPasswordIncorrect);
-                }
-            });
+                SaveToPreferences();
+                OnAuthComplete?.Invoke(this, true);
+            }
+            else if (task.Exception != null)
+            {
+                string errMessage = task.Exception.Message;
+                ShowAlert(errMessage);
+                OnAuthComplete?.Invoke(this, false);
+            }
+            else
+                ShowAlert(Strings.UnknownError);
         }
-        private static void ShowAlert(string message)
+        private void ShowAlert(string errMessage)
         {
+            errMessage = fbd.GetErrorMessage(errMessage);
             MainThread.InvokeOnMainThreadAsync(() =>
             {
-                Toast.Make(message, ToastDuration.Long).Show();
+                Toast.Make(errMessage, ToastDuration.Long).Show();
             });
         }
         public override bool IsValid()
